@@ -18,8 +18,12 @@ public class Information{
        
     }
    
-    public int getYEAR(int y){
+    public int getYEAR(){
        return YEAR; 
+    }
+    
+    public String getCountry(){
+        return COUNTRY; 
     }
     
     

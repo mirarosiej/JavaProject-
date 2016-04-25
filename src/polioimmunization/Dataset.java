@@ -12,7 +12,7 @@ public class Dataset{
     private Legend[] dimension;
     private Datapoint[] fact;
     
-   public Datapoint[] getfact(){
+   public Datapoint[] getFact(){
        return fact;
    }
   

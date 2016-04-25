@@ -13,8 +13,9 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.chart.BarChart;
 import javafx.scene.chart.XYChart;
-import javafx.scene.control.Label;
+
 
 /**
  *
@@ -28,7 +29,7 @@ public class poloController implements Initializable {
     @FXML
     private void handleButtonAction(ActionEvent event) {
         System.out.println("You clicked me!");
-        label.setText("Hello World!");
+        
     }
     
     @Override
@@ -45,7 +46,7 @@ public class poloController implements Initializable {
         // read from the URL
         Scanner scan = null;
         try {
-            scan = new Scanner(url.openStream());
+            scan = new Scanner(myUrl.openStream());
         } catch (Exception e) {
             System.out.println("Could not connect to " + s);
             System.exit(-1);
@@ -63,15 +64,18 @@ public class poloController implements Initializable {
         Dataset data = gson.fromJson(str, Dataset.class);
         System.out.println(data.toString());
 
-        
-        
-        }
         XYChart.Series< String, Number> ImmunizationSeries = new XYChart.Series();
         Datapoint[] point= data.getFact(); 
-        for(Datapoint xyz: point){
-            System.out.println(xyz);
-            
+        for(Datapoint xyz : point){
+            if(xyz.getDim().getCountry() != null){
+                ImmunizationSeries.getData().add(new XYChart.Data(xyz.getDim().getCountry(), xyz.getValue()));      
+
         }
+        }
+        bar.getData().add(ImmunizationSeries);
+        
+    }
+        
                 
       
     }

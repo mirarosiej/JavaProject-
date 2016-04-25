@@ -21,6 +21,14 @@ public class Datapoint
     public Datapoint(){
         
     }
+    
+    public Information getDim(){
+        return dim; 
+    }
+    
+    public int getValue(){
+        return Value; 
+    }
     @Override 
     public String toString(){
         return " " + Value + " " + dim; 
